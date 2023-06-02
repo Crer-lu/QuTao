@@ -20,23 +20,23 @@ var ProductNum uint
 
 // User describes basic details of a user
 type User struct {
-	Id       uint   `json:"Id"`
-	Name     string `json:"Name"`
-	Password string `json:"Password"`
-	Balance  uint   `json:"Balance"`
-	//Product  []Product `json:"Product"`
+	Id        uint   `json:"id"`
+	Name      string `json:"name"`
+	Password  string `json:"password"`
+	Balance   uint   `json:"balance"`
+	Goodslist string `json:"goodslist"`
 }
 
 // Product describes basic details of a product
 type Product struct {
-	Id        uint   `json:"Id"`
-	Url       string `json:"Url"`
-	Price     uint   `json:"Price"`
-	Owner     string `json:"Owner"`
-	Allowance uint   `json:"Allowance"`
+	Id        uint   `json:"id"`
+	Url       string `json:"url"`
+	Price     uint   `json:"price"`
+	Owner     string `json:"owner"`
+	Allowance uint   `json:"allowance"`
 }
 
-//buy product struct
+// buy product struct
 type BuyProductRequest struct {
 	Buyer      string `json:"Buyer"`
 	Product_id uint   `json:"Product_id"`

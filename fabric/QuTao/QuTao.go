@@ -19,24 +19,25 @@ type SmartContract struct {
 
 // User describes basic details of a user
 type User struct {
-	Id       uint   `json:"Id"`
-	Name     string `json:"Name"`
-	Password string `json:"Password"`
-	Balance  uint   `json:"Balance"`
+	Id        uint   `json:"id"`
+	Name      string `json:"name"`
+	Password  string `json:"password"`
+	Balance   uint   `json:"balance"`
+	Goodslist string `json:"goodslist"`
 }
 
 // Product describes basic details of a product
 type Product struct {
-	Id        uint   `json:"Id"`
-	Url       string `json:"Url"`
-	Price     uint   `json:"Price"`
-	Owner     string `json:"Owner"`
-	Allowance uint   `json:"Allowance"`
+	Id        uint   `json:"id"`
+	Url       string `json:"url"`
+	Price     uint   `json:"price"`
+	Owner     string `json:"owner"`
+	Allowance uint   `json:"allowance"`
 }
 
 // QueryResult structure used for handling result of query
 type QueryUserResult struct {
-	Key    string `json:"Key"`
+	Key    string `json:"key"`
 	Record *User
 }
 type QueryProductResult struct {
@@ -47,9 +48,9 @@ type QueryProductResult struct {
 // InitLedger adds a base set of users to the ledger
 func (s *SmartContract) InitLedger(ctx contractapi.TransactionContextInterface) error {
 	users := []User{
-		{Id: 0, Name: "test1", Password: "test1", Balance: 233},
-		{Id: 1, Name: "test2", Password: "test2", Balance: 233},
-		{Id: 2, Name: "test3", Password: "test3", Balance: 233},
+		{Id: 0, Name: "test1", Password: "test1", Balance: 233, Goodslist: ""},
+		{Id: 1, Name: "test2", Password: "test2", Balance: 233, Goodslist: ""},
+		{Id: 2, Name: "test3", Password: "test3", Balance: 233, Goodslist: ""},
 	}
 	for _, user := range users {
 		userAsBytes, _ := json.Marshal(user)
@@ -65,10 +66,11 @@ func (s *SmartContract) InitLedger(ctx contractapi.TransactionContextInterface) 
 // CreateCar adds a new user to the world state with given details
 func (s *SmartContract) CreateUser(ctx contractapi.TransactionContextInterface, id uint, name string, password string, balance uint) error {
 	user := User{
-		Id:       id,
-		Name:     name,
-		Password: password,
-		Balance:  balance,
+		Id:        id,
+		Name:      name,
+		Password:  password,
+		Balance:   balance,
+		Goodslist: "",
 	}
 	//check uniqueness
 	status_bts, err := ctx.GetStub().GetState("USER" + name)
@@ -158,6 +160,15 @@ func (s *SmartContract) CreateProduct(ctx contractapi.TransactionContextInterfac
 	if userAsBytes == nil {
 		return fmt.Errorf("user %s does not exist", owner)
 	} else {
+		user := new(User)
+		json.Unmarshal(userAsBytes, user)
+
+		user.Goodslist += strconv.Itoa(int(id)) + " "
+
+		//save user data
+		userAsBytes, _ = json.Marshal(user)
+		_ = ctx.GetStub().PutState("USER"+owner, userAsBytes)
+
 		// there exists this user
 		productAsBytes, err := json.Marshal(product)
 
