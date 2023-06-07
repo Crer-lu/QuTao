@@ -29,18 +29,37 @@ type User struct {
 
 // Product describes basic details of a product
 type Product struct {
-	Id        uint   `json:"id"`
-	Url       string `json:"url"`
-	Price     uint   `json:"price"`
-	Owner     string `json:"owner"`
-	Allowance uint   `json:"allowance"`
+	Id          uint   `json:"id"`
+	Url         string `json:"url"`
+	Price       uint   `json:"price"`
+	Name        string `json:"name"`
+	Description string `json:"description"`
+	Owner       string `json:"owner"`
+	Allowance   uint   `json:"allowance"`
 }
 
-// buy product struct
+type UpdateUserRequest struct {
+	Name     string `json:"name"`
+	Password string `json:"password"`
+	Balance  uint   `json:"balance"`
+	Select   string `json:"select"`
+}
+
+type UpdateProductRequest struct {
+	Id          uint   `json:"id"`
+	Url         string `json:"url"`
+	Price       uint   `json:"price"`
+	Allowance   uint   `json:"allowance"`
+	Name        string `json:"name"`
+	Description string `json:"description"`
+	Select      string `json:"select"`
+}
+
+//buy product struct
 type BuyProductRequest struct {
-	Buyer      string `json:"Buyer"`
-	Product_id uint   `json:"Product_id"`
-	Times      uint   `json:"Times"`
+	Buyer      string `json:"buyer"`
+	Product_id uint   `json:"product_id"`
+	Times      uint   `json:"times"`
 }
 
 var (
@@ -127,7 +146,7 @@ func RunGin() {
 			c.JSON(http.StatusOK, gin.H{
 				"code":    "200",
 				"message": "Success",
-				"result":  "{\"Id\":" + strconv.Itoa(int(UserNum-1)) + "}",
+				"result":  "{\"id\":" + strconv.Itoa(int(UserNum-1)) + "}",
 			})
 		}
 	})
@@ -146,6 +165,51 @@ func RunGin() {
 				"result":  string(err.Error()),
 			})
 		} else {
+			c.JSON(http.StatusOK, gin.H{
+				"code":    "200",
+				"message": "Success",
+				"result":  string(result.Payload),
+			})
+		}
+	})
+
+	r.POST("/UpdateUser", func(c *gin.Context) {
+		var user UpdateUserRequest
+		c.BindJSON(&user)
+		var result channel.Response
+		result, err := ChannelExecute("UpdateUser", [][]byte{[]byte(user.Name), []byte(user.Password), []byte(strconv.Itoa(int(user.Balance))), []byte(user.Select)})
+		fmt.Println(result)
+		if err != nil {
+			//fmt.Printf("Failed to evaluate transaction: %s\n", err)
+			c.JSON(http.StatusBadRequest, gin.H{
+				"code":    "400",
+				"message": "Failure",
+				"result":  string(err.Error()),
+			})
+		} else {
+			c.JSON(http.StatusOK, gin.H{
+				"code":    "200",
+				"message": "Success",
+				"result":  string(result.Payload),
+			})
+		}
+	})
+
+	r.POST("/UpdateProduct", func(c *gin.Context) {
+		var product UpdateProductRequest
+		c.BindJSON(&product)
+		var result channel.Response
+		result, err := ChannelExecute("UpdateProduct", [][]byte{[]byte(strconv.Itoa(int(product.Id))), []byte(product.Url), []byte(strconv.Itoa(int(product.Price))), []byte(strconv.Itoa(int(product.Allowance))), []byte(product.Name), []byte(product.Description), []byte(product.Select)})
+		fmt.Println(result)
+		if err != nil {
+			//fmt.Printf("Failed to evaluate transaction: %s\n", err)
+			c.JSON(http.StatusBadRequest, gin.H{
+				"code":    "400",
+				"message": "Failure",
+				"result":  string(err.Error()),
+			})
+		} else {
+			ProductNum++
 			c.JSON(http.StatusOK, gin.H{
 				"code":    "200",
 				"message": "Success",
@@ -178,7 +242,7 @@ func RunGin() {
 		var product Product
 		c.BindJSON(&product)
 		var result channel.Response
-		result, err := ChannelExecute("CreateProduct", [][]byte{[]byte(strconv.Itoa(int(ProductNum))), []byte(product.Url), []byte(strconv.Itoa(int(product.Price))), []byte(product.Owner), []byte(strconv.Itoa(int(product.Allowance)))})
+		result, err := ChannelExecute("CreateProduct", [][]byte{[]byte(strconv.Itoa(int(ProductNum))), []byte(product.Url), []byte(strconv.Itoa(int(product.Price))), []byte(product.Owner), []byte(strconv.Itoa(int(product.Allowance))), []byte(product.Name), []byte(product.Description)})
 		fmt.Println(result)
 		if err != nil {
 			//fmt.Printf("Failed to evaluate transaction: %s\n", err)
@@ -192,7 +256,7 @@ func RunGin() {
 			c.JSON(http.StatusOK, gin.H{
 				"code":    "200",
 				"message": "Success",
-				"result":  "{\"Id\":" + strconv.Itoa(int(ProductNum-1)) + "}",
+				"result":  "{\"id\":" + strconv.Itoa(int(ProductNum-1)) + "}",
 			})
 		}
 	})

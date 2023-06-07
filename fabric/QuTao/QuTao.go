@@ -28,21 +28,23 @@ type User struct {
 
 // Product describes basic details of a product
 type Product struct {
-	Id        uint   `json:"id"`
-	Url       string `json:"url"`
-	Price     uint   `json:"price"`
-	Owner     string `json:"owner"`
-	Allowance uint   `json:"allowance"`
+	Id          uint   `json:"id"`
+	Url         string `json:"url"`
+	Price       uint   `json:"price"`
+	Name        string `json:"name"`
+	Description string `json:"description"`
+	Owner       string `json:"owner"`
+	Allowance   uint   `json:"allowance"`
 }
 
 // QueryResult structure used for handling result of query
 type QueryUserResult struct {
 	Key    string `json:"key"`
-	Record *User
+	Record *User  `json:"record"`
 }
 type QueryProductResult struct {
-	Key    string `json:"key"`
-	Record *Product
+	Key    string   `json:"key"`
+	Record *Product `json:"record"`
 }
 
 // InitLedger adds a base set of users to the ledger
@@ -142,13 +144,104 @@ func (s *SmartContract) QueryAllUsers(ctx contractapi.TransactionContextInterfac
 	return results, nil
 }
 
-func (s *SmartContract) CreateProduct(ctx contractapi.TransactionContextInterface, id uint, url string, price uint, owner string, allowance uint) error {
+func (s *SmartContract) UpdateUser(ctx contractapi.TransactionContextInterface, name string, password string, balance uint, sel string) error {
+	if len(sel) != 2 {
+		return fmt.Errorf("select string length ERROR!")
+	}
+
+	userAsBytes, err := ctx.GetStub().GetState("USER" + name)
+
+	if err != nil {
+		return fmt.Errorf("Failed to read from world state. %s", err.Error())
+	}
+
+	if userAsBytes == nil {
+		return fmt.Errorf("user %s does not exist", name)
+	}
+
+	user := new(User)
+	err = json.Unmarshal(userAsBytes, user)
+
+	if err != nil {
+		return fmt.Errorf("Marshal failure")
+	}
+
+	if sel[0] == '1' {
+		user.Password = password
+	}
+	if sel[1] == '1' {
+		user.Balance = balance
+	}
+
+	userAsBytes, err = json.Marshal(user)
+
+	if err != nil {
+		return err
+	}
+
+	ctx.GetStub().PutState("USER"+name, userAsBytes)
+
+	return nil
+}
+
+func (s *SmartContract) UpdateProduct(ctx contractapi.TransactionContextInterface, id uint, url string, price uint, allowance uint, name string, description string, sel string) error {
+	if len(sel) != 5 {
+		return fmt.Errorf("select string length ERROR!")
+	}
+
+	productAsBytes, err := ctx.GetStub().GetState("PROD" + strconv.Itoa(int(id)))
+
+	if err != nil {
+		return fmt.Errorf("Failed to read from world state. %s", err.Error())
+	}
+
+	if productAsBytes == nil {
+		return fmt.Errorf("product %d does not exist", id)
+	}
+
+	product := new(Product)
+	err = json.Unmarshal(productAsBytes, product)
+
+	if err != nil {
+		return fmt.Errorf("Marshal failure")
+	}
+
+	if sel[0] == '1' {
+		product.Url = url
+	}
+	if sel[1] == '1' {
+		product.Price = price
+	}
+	if sel[2] == '1' {
+		product.Allowance = allowance
+	}
+	if sel[3] == '1' {
+		product.Name = name
+	}
+	if sel[4] == '1' {
+		product.Description = description
+	}
+
+	productAsBytes, err = json.Marshal(product)
+
+	if err != nil {
+		return err
+	}
+
+	ctx.GetStub().PutState("PROD"+strconv.Itoa(int(id)), productAsBytes)
+
+	return nil
+}
+
+func (s *SmartContract) CreateProduct(ctx contractapi.TransactionContextInterface, id uint, url string, price uint, owner string, allowance uint, name string, description string) error {
 	product := Product{
-		Id:        id,
-		Url:       url,
-		Price:     price,
-		Owner:     owner,
-		Allowance: allowance,
+		Id:          id,
+		Url:         url,
+		Price:       price,
+		Owner:       owner,
+		Allowance:   allowance,
+		Name:        name,
+		Description: description,
 	}
 
 	userAsBytes, err := ctx.GetStub().GetState("USER" + owner)
@@ -271,6 +364,9 @@ func (s *SmartContract) BuyProduct(ctx contractapi.TransactionContextInterface, 
 			return fmt.Errorf("Marshal failure")
 		}
 
+		if buyer == product.Owner {
+			return fmt.Errorf("Buyer is not allowed to be the same as product's owner")
+		}
 		if times*product.Price <= user.Balance && times <= product.Allowance {
 			//enough money
 
