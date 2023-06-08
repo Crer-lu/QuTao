@@ -1,0 +1,1022 @@
+{
+	"info": {
+		"_postman_id": "2309c3c0-bb16-4393-a9d6-87d87d4cca49",
+		"name": "QuTao",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27882549"
+	},
+	"item": [
+		{
+			"name": "register(payload:userId)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"username\":\"用户名\",\"password\":\"密码\"}"
+				},
+				"url": {
+					"raw": "localhost:8080/register",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"register"
+					]
+				},
+				"description": "``` java\npublic record Register(String username, String password){}\n\n```"
+			},
+			"response": [
+				{
+					"name": "success",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"username\":\"test0\",\"password\":\"123456\"}"
+						},
+						"url": {
+							"raw": "localhost:8080/register",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"register"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 08 Jun 2023 14:56:28 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"payload\": 2,\n    \"message\": null\n}"
+				}
+			]
+		},
+		{
+			"name": "changePassword",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"username\":\"用户名\",\"oldPassword\":\"旧密码\",\"newPassword\":\"新密码\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/changePassword",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"changePassword"
+					]
+				},
+				"description": "``` java\npublic record ChangePassword(String username, String oldPassword, String newPassword){}\n\n```"
+			},
+			"response": [
+				{
+					"name": "success",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"username\":\"test0\",\"oldPassword\":\"123456\",\"newPassword\":\"666666\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/changePassword",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"changePassword"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 08 Jun 2023 14:59:01 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"payload\": null,\n    \"message\": null\n}"
+				}
+			]
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"username\":\"test0\",\"password\":\"123456\"}"
+				},
+				"url": {
+					"raw": "localhost:8080/login",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"login"
+					]
+				},
+				"description": "``` java\npublic record Login(String username, String password){}\n```"
+			},
+			"response": [
+				{
+					"name": "success",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"username\":\"test0\",\"password\":\"666666\"}"
+						},
+						"url": {
+							"raw": "localhost:8080/login",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"login"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Set-Cookie",
+							"value": "JSESSIONID=6CF875DD87F89B891AF6B453FA433F49; Path=/; HttpOnly"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 08 Jun 2023 14:56:45 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"payload\": null,\n    \"message\": null\n}"
+				},
+				{
+					"name": "failure-密码错误",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"username\":\"test0\",\"password\":\"123456\"}"
+						},
+						"url": {
+							"raw": "localhost:8080/login",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"login"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 08 Jun 2023 15:44:11 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": false,\n    \"payload\": null,\n    \"message\": null\n}"
+				}
+			]
+		},
+		{
+			"name": "createProduct(payload:productId)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"username\":\"用户名\",\"url\":\"虚拟商品地址\",\"price\":(uint)价格,\"allowance\":(int)商品余量,\"name\":\"商品名\",\"description\":\"商品描述\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/createProduct",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"createProduct"
+					]
+				},
+				"description": "``` java\npublic record CreateProduct(String username, String url, int price, int allowance, String name, String description){}\n```"
+			},
+			"response": [
+				{
+					"name": "success",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"username\":\"test0\",\"url\":\"testUrl\",\"price\":40,\"allowance\":3,\"name\":\"游戏B\",\"description\":\"一个游戏\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/createProduct",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"createProduct"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 08 Jun 2023 15:42:22 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"payload\": 2,\n    \"message\": null\n}"
+				},
+				{
+					"name": "failure-用户名不匹配",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"username\":\"Noy\",\"url\":\"testUrl\",\"price\":30,\"allowance\":3,\"name\":\"游戏A\",\"description\":\"一个游戏\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/createProduct",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"createProduct"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 08 Jun 2023 15:40:01 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": false,\n    \"payload\": null,\n    \"message\": \"not logged in\"\n}"
+				}
+			]
+		},
+		{
+			"name": "recharge(payload:balance)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"username\":\"用户名\",\"amount\":(int)充值金额}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/recharge",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"recharge"
+					]
+				},
+				"description": "``` java\npublic record Recharge(String username, int amount){}\n```"
+			},
+			"response": [
+				{
+					"name": "success",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"username\":\"test0\",\"amount\":30}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/recharge",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"recharge"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 08 Jun 2023 15:32:02 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"payload\": 30,\n    \"message\": null\n}"
+				}
+			]
+		},
+		{
+			"name": "modifyProduct",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"username\":\"用户名\",\"productId\":(uint)商品Id,\"url\":\"新url\",\"price\":新价格,\"allowance\":新余量,\"name\":\"新商品名\",\"description\":\"新描述\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/modifyProduct",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"modifyProduct"
+					]
+				},
+				"description": "``` java\npublic record ModifyProduct(String username, int productId, @Nullable String url, @Nullable Integer price,\n                                @Nullable Integer allowance, @Nullable String name, @Nullable String description){}\n\n```"
+			},
+			"response": [
+				{
+					"name": "success",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"username\":\"test0\",\"productId\":2,\"url\":\"modifiedUrl\",\"price\":23,\"allowance\":1,\"name\":\"游戏C\",\"description\":\"修改过的描述\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/modifyProduct",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"modifyProduct"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 08 Jun 2023 15:50:12 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"payload\": null,\n    \"message\": null\n}"
+				},
+				{
+					"name": "success-参数缺省",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"username\":\"test0\",\"productId\":2,\"url\":\"modifiedUrl\",\"price\":66}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/modifyProduct",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"modifyProduct"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 08 Jun 2023 15:50:50 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"payload\": null,\n    \"message\": null\n}"
+				},
+				{
+					"name": "failure-不是商品主人",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"username\":\"test0\",\"productId\":6,\"url\":\"modifiedUrl\",\"price\":1}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/modifyProduct",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"modifyProduct"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 08 Jun 2023 15:59:51 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": false,\n    \"payload\": null,\n    \"message\": \"not the owner\"\n}"
+				}
+			]
+		},
+		{
+			"name": "listProduct",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "搜索内容",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/listProduct",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"listProduct"
+					]
+				},
+				"description": "String"
+			},
+			"response": [
+				{
+					"name": "success-搜索不用登陆",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "游戏",
+							"options": {
+								"raw": {
+									"language": "text"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/listProduct",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"listProduct"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 08 Jun 2023 16:06:50 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"payload\": [\n        {\n            \"id\": 1,\n            \"url\": \"testUrl\",\n            \"price\": 0,\n            \"owner\": \"test0\",\n            \"name\": \"游戏A\",\n            \"description\": \"一个游戏\",\n            \"allowance\": 3\n        },\n        {\n            \"id\": 2,\n            \"url\": \"modifiedUrl\",\n            \"price\": 66,\n            \"owner\": \"test0\",\n            \"name\": \"游戏C\",\n            \"description\": \"修改过的描述\",\n            \"allowance\": 1\n        }\n    ],\n    \"message\": null\n}"
+				}
+			]
+		},
+		{
+			"name": "listMyProduct",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "当前用户名",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/listMyProduct",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"listMyProduct"
+					]
+				},
+				"description": "String"
+			},
+			"response": [
+				{
+					"name": "success",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "test0",
+							"options": {
+								"raw": {
+									"language": "text"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/listMyProduct",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"listMyProduct"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 08 Jun 2023 16:14:03 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"payload\": [\n        {\n            \"id\": 0,\n            \"url\": \"testUrl\",\n            \"price\": 0,\n            \"owner\": \"test0\",\n            \"name\": \"\",\n            \"description\": \"\",\n            \"allowance\": 3\n        },\n        {\n            \"id\": 1,\n            \"url\": \"testUrl\",\n            \"price\": 0,\n            \"owner\": \"test0\",\n            \"name\": \"游戏A\",\n            \"description\": \"一个游戏\",\n            \"allowance\": 3\n        },\n        {\n            \"id\": 2,\n            \"url\": \"modifiedUrl\",\n            \"price\": 66,\n            \"owner\": \"test0\",\n            \"name\": \"游戏C\",\n            \"description\": \"修改过的描述\",\n            \"allowance\": 1\n        }\n    ],\n    \"message\": null\n}"
+				}
+			]
+		},
+		{
+			"name": "buyProduct",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"username\":\"用户名\",\"productId\":(uint)购买的商品id,\"times\":(uint)购买次数}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/buyProduct",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"buyProduct"
+					]
+				},
+				"description": "```\npublic record Buy(String username, int productId, int times){}\n```"
+			},
+			"response": [
+				{
+					"name": "success",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"username\":\"test0\",\"productId\":6,\"times\":1}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/buyProduct",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"buyProduct"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 08 Jun 2023 16:16:48 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"payload\": null,\n    \"message\": null\n}"
+				},
+				{
+					"name": "failure-金钱或余量不足",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"username\":\"test0\",\"productId\":6,\"times\":2}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/buyProduct",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"buyProduct"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 08 Jun 2023 16:19:09 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": false,\n    \"payload\": null,\n    \"message\": null\n}"
+				}
+			]
+		}
+	]
+}
