@@ -76,6 +76,7 @@ const HomePage: React.FC = () => {
         setBalance(result);
     };
     useEffect(() => {
+      if(localStorage.getItem('name') != "")
         fetchData();
     }, []) 
 
@@ -99,7 +100,7 @@ const HomePage: React.FC = () => {
             valueType: 'digit',
         }
     ];
-  return (
+  return (localStorage.getItem('name') == "") ? <Guide /> : (
     <PageContainer>
       <div
         style={{

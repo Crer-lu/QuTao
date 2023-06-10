@@ -1,3 +1,4 @@
+import Guide from '@/components/Guide/index';
 import services from '@/services/demo';
 import { createProduct, listMyProduct, listProduct, modifyProduct } from '@/services/demo/UserController';
 
@@ -196,7 +197,7 @@ const TableList: React.FC<unknown> = () => {
 
   const columnsBooks: ProDescriptionsItemProps<API.BookInfo>[] = columns.slice(1, columns.length);
 
-  return (
+  return (localStorage.getItem('name') == "") ? <Guide /> : (
     <PageContainer
       header={{
         title: '图书管理',
