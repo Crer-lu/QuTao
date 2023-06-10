@@ -197,14 +197,16 @@ const TableList: React.FC<unknown> = () => {
 
   const columnsBooks: ProDescriptionsItemProps<API.BookInfo>[] = columns.slice(1, columns.length);
 
+  if (localStorage.getItem('name') == '') {
+    window.location.href = '/login';
+  }
   return (localStorage.getItem('name') == "") ? <Guide /> : (
     <PageContainer
       header={{
-        title: '图书管理',
       }}
     >
       <ProTable<API.productInfo>
-        headerTitle="图书列表"
+        headerTitle="我的商品列表"
         actionRef={actionRef}
         rowKey="cardId"
         search={false}

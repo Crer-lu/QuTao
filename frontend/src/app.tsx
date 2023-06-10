@@ -1,14 +1,14 @@
 // 运行时配置
 
 import { RunTimeLayoutConfig } from '@umijs/max';
-import img from "./assets\\a.png"
+import img from "./assets\\b.png"
 import { useModel } from 'umi';
 // 全局初始化数据配置，用于 Layout 用户信息和权限初始化
 // 更多信息见文档：https://umijs.org/docs/api/runtime-config#getinitialstate
 export async function getInitialState(): Promise<any> {
   return { 
-    name: '图书1管理系统',
-    logout: () => <div>www</div>,
+    name: '区淘',
+    // logout: () => <div>www</div>,
   };
 }
 

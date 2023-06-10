@@ -100,8 +100,20 @@ const HomePage: React.FC = () => {
             valueType: 'digit',
         }
     ];
+  
+    
+  if (localStorage.getItem('name') == '') {
+    window.location.href = '/login';
+  }
   return (localStorage.getItem('name') == "") ? <Guide /> : (
     <PageContainer>
+      <div
+        style={{
+          margin: '24px',
+        }}
+      >
+        用户名：{localStorage.getItem('name')}
+      </div>
       <div
         style={{
           margin: '24px',
@@ -155,6 +167,9 @@ const HomePage: React.FC = () => {
                 margin: 20,
             },
           }}
+          style={{
+            width: '50%',
+          }}
         />
       </div>
       <div
@@ -186,6 +201,9 @@ const HomePage: React.FC = () => {
             initialValues: {
                 amount: 0,
             },
+          }}
+          style={{
+            width: '50%',
           }}
         />
       </div>

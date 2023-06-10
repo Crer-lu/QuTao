@@ -179,11 +179,10 @@ const TableList: React.FC<unknown> = () => {
   return (
     <PageContainer
       header={{
-        title: '图书管理',
       }}
     >
       <ProTable<API.productInfo>
-        headerTitle="图书列表"
+        headerTitle="商品列表"
         actionRef={actionRef}
         rowKey="cardId"
         search={{ labelWidth: 'auto' }}

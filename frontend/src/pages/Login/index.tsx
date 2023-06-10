@@ -17,7 +17,7 @@ import {
 import { message, Space, Tabs } from 'antd';
 import type { CSSProperties } from 'react';
 import { useState } from 'react';
-import logoimg from "../../assets\\a.png"
+import logoimg from "../../assets\\b.png"
 import { history, useModel } from 'umi';
 
 type LoginType = 'account';
@@ -121,6 +121,23 @@ export default () => {
             }}
           >
             去注册
+          </a>
+        </div>
+        <div
+          style={{
+            marginBlockEnd: 24,
+          }}
+        >
+          <a
+            style={{
+              display: 'block',
+              textAlign: 'center',
+            }}
+            onClick={() => {
+              window.location.href = '/product'
+            }}
+          >
+            游客模式查看商品
           </a>
         </div>
       </div>

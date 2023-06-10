@@ -7,7 +7,7 @@ export default defineConfig({
   initialState: {},
   request: {},
   layout: {
-    title: '图书管理系统',
+    title: '区淘',
   },
   routes: [
     {
@@ -20,12 +20,12 @@ export default defineConfig({
       component: './Home',
     },
     {
-      name: '产品',
+      name: '商品',
       path: '/product',
       component: './Product',
     },
     {
-      name: '我的产品',
+      name: '我的商品',
       path: '/myproduct',
       component: './MyProduct',
     },

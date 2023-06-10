@@ -536,7 +536,7 @@ const TableList: React.FC<unknown> = () => {
   return (
     <PageContainer
       header={{
-        title: '图书管理',
+        // title: '图书管理',
       }}
     >
       <ProTable<API.BookInfo>
