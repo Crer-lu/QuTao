@@ -101,7 +101,11 @@ const HomePage: React.FC = () => {
     ];
   return (
     <PageContainer>
-      <div>
+      <div
+        style={{
+          margin: '24px',
+        }}
+      >
         用户余额：{balance}
         <button
             onClick={async () => {
@@ -126,8 +130,18 @@ const HomePage: React.FC = () => {
             刷新
         </button>
       </div>
-      <div>
-        修改密码：
+      <div
+        style={{
+          margin: '24px',
+        }}
+      >
+        <div
+          style={{
+            marginBottom: 24,
+          }}
+        >
+          修改密码：
+        </div>
         <ProTable<API.productInfo, API.productInfo>
           onSubmit={async (value) => {
             const success = await handleChangePassword({...value, username: localStorage.getItem('name') || ''});
@@ -135,10 +149,25 @@ const HomePage: React.FC = () => {
           rowKey="id"
           type="form"
           columns={columns}
+          form={{
+            style: {
+                margin: 20,
+            },
+          }}
         />
       </div>
-      <div>
-        充值：
+      <div
+        style={{
+          margin: '24px',
+        }}
+      >
+        <div
+          style={{
+            marginBottom: 24,
+          }}
+        >
+          充值：
+        </div>
         <ProTable<API.productInfo, API.productInfo>
           onSubmit={async (value) => {
             const res = await handleRecharge({...value, username: localStorage.getItem('name') || ''});
@@ -149,6 +178,14 @@ const HomePage: React.FC = () => {
           rowKey="id"
           type="form"
           columns={columnsRecharge}
+          form={{
+            style: {
+                margin: 20,
+            },
+            initialValues: {
+                amount: 0,
+            },
+          }}
         />
       </div>
     </PageContainer>

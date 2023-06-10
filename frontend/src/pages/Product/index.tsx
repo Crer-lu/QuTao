@@ -33,7 +33,8 @@ const handleBuy = async (fields: any) => {
     return true;
   } catch (error) {
     hide();
-    message.error('购买失败请重试！');
+    console.log(error.message)
+    message.error(error.message);
     return false;
   }
 };
