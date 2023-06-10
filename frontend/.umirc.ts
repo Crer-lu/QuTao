@@ -30,6 +30,11 @@ export default defineConfig({
       component: './MyProduct',
     },
     {
+      name: '个人信息',
+      path: '/info',
+      component: './Info',
+    },
+    {
       name: '登出',
       path: '/logout',
       component: './Logout',
