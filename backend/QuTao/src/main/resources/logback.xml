@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <!-- 定义日志格式  -->
+    <property name="LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%-5level] [%thread] [%-30.30logger{30}] %msg%n"/>
+
+    <!-- ConsoleAppender：控制台输出 -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <!-- %m输出的信息,%p日志级别,%t线程名,%d日期,%c类的全名,%i索引【从数字0开始递增】 -->
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level: %msg%n</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+<!--    <appender username="normal-log" class="ch.qos.logback.core.ConsoleAppender">-->
+<!--        <encoder>-->
+<!--            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level: %msg%n</pattern>-->
+<!--            <charset>UTF-8</charset>-->
+<!--        </encoder>-->
+<!--    </appender>-->
+
+    <!-- 控制台输出日志级别 -->
+    <root level="info">
+        <appender-ref ref="STDOUT"/>
+    </root>
+    <root level="debug">
+        <appender-ref ref="STDOUT"/>
+    </root>
+
+    <!-- 指定项目中某个包，当有日志操作行为时的日志记录级别 -->
+    <!-- 在这个根包下面的所有日志操作行为的权限都是DEBUG -->
+<!--    <logger username="cn.noy.qutao" level="DEBUG">-->
+<!--        &lt;!&ndash;与上面appender的name要一致&ndash;&gt;-->
+<!--        <appender-ref ref="normal-log" />-->
+<!--    </logger>-->
+</configuration>

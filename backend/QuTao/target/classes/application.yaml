@@ -1,0 +1,5 @@
+# slf4j日志配置
+logging:
+  # 配置级别
+  level:
+    root: info
