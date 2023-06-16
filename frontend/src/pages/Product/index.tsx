@@ -141,7 +141,7 @@ const TableList: React.FC<unknown> = () => {
     {
       title: '余量',
       dataIndex: 'allowance',
-      valueType: 'text',
+      valueType: 'digit',
       formItemProps: {
         rules: [
           {

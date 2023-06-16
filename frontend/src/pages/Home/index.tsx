@@ -3,7 +3,7 @@ import { PageContainer } from '@ant-design/pro-components';
 import styles from './index.less';
 
 const HomePage: React.FC = () => {
-  if (localStorage.getItem('name') == '') {
+  if (localStorage.getItem('name')===null || localStorage.getItem('name') == '') {
     window.location.href = '/login';
   }
   return (
