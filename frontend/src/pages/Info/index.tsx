@@ -102,7 +102,7 @@ const HomePage: React.FC = () => {
     ];
   
     
-  if (localStorage.getItem('name') == '') {
+  if (localStorage.getItem('name')===null || localStorage.getItem('name') == '') {
     window.location.href = '/login';
   }
   return (localStorage.getItem('name') == "") ? <Guide /> : (

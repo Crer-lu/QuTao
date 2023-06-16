@@ -197,7 +197,7 @@ const TableList: React.FC<unknown> = () => {
 
   const columnsBooks: ProDescriptionsItemProps<API.BookInfo>[] = columns.slice(1, columns.length);
 
-  if (localStorage.getItem('name') == '') {
+  if (localStorage.getItem('name')===null || localStorage.getItem('name') == '') {
     window.location.href = '/login';
   }
   return (localStorage.getItem('name') == "") ? <Guide /> : (
