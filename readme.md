@@ -1,9 +1,15 @@
-# 部署方法
+# 区淘 —— 智能区块链交易平台
 
-## 前端
+![logo](./report/logo.png)
 
-## 后端
+## 仓库创立
 
-## fabric
+2023春夏区块链大程
 
-[‍‬‍‍‍‍‍‍﻿⁢‌‌‌‌⁡⁢⁡⁡⁡⁢‍⁡‌⁣‍⁢⁡﻿‬⁤‍⁢⁤⁡⁣⁢﻿‬‬区块链层API LIST及部署方法 - 飞书云文档 (feishu.cn)](https://xn4zlkzg4p.feishu.cn/docx/DiRgdMRvGom35ZxVIB0cnmNknCd)
+## 项目文档
+
+[‌⁢⁢⁤‬⁤﻿⁤‌⁡⁡‍‍⁤⁢‌‍⁡⁡‌⁣⁡﻿⁤‌⁤⁢⁢﻿‍⁢﻿⁡﻿⁢⁢⁤⁡⁢QuTao ——智能区块链交易平台 - 飞书云文档 (feishu.cn)](https://xn4zlkzg4p.feishu.cn/docx/RYIudesaEo7NWJx91YPcVEOnnEd)
+
+## 部署文档
+
+详见各层各自的文件夹内的readme
