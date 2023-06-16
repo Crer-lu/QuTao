@@ -13,7 +13,23 @@ const Guide: React.FC<Props> = (props) => {
     <Layout>
       <Row>
         <Typography.Title level={3} className={styles.title}>
-          欢迎使用 <strong>{name}</strong> ！
+          <div style={{
+            textAlign: 'center',
+            fontSize: '50px',
+            marginTop: '150px',
+            marginBottom: '0px',
+          }}>
+            欢迎使用
+          </div>
+          <div style={{
+            textAlign: 'center',
+            fontSize: '170px',
+            marginTop: '0px',
+            marginBottom: '50px',
+            // color: 'rgb(36, 33, 33)',
+            color: '#392F41',
+          }}>{name}</div>
+
         </Typography.Title>
       </Row>
     </Layout>

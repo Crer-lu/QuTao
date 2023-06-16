@@ -2,6 +2,7 @@ import Guide from '@/components/Guide';
 import { PageContainer } from '@ant-design/pro-components';
 import styles from './index.less';
 import { Button } from 'antd';
+import bkgimg from "../../assets\\c.png"
 
 const HomePage: React.FC = () => {
   // if (localStorage.getItem('name')===null || localStorage.getItem('name') == '') {
@@ -35,11 +36,31 @@ const HomePage: React.FC = () => {
           登录/注册
         </Button>,
       ]}
+      style={{
+        backgroundImage: `url(${bkgimg})`,
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
+        height: '100vh',
+      }}
     >
 
       <div className={styles.container}>
         <Guide name={'区淘'} />
       </div>
+      
+      {/* <div style={{
+          position:"absolute", 
+          width:"100%",
+          height:"100%", 
+          zIndex:0,
+        }}
+      >
+        <img src={bkgimg} style={{
+            width:"100%",
+            height:"100%", 
+          }}>
+        </img>
+      </div> */}
     </PageContainer>
   );
 };
