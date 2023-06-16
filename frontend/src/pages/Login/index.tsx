@@ -67,7 +67,7 @@ export default () => {
 
   return (
     <ProConfigProvider hashed={false}>
-      <div style={{ backgroundColor: 'white' }}>
+      <div style={{}}>
         <LoginForm
           logo={<img src={logoimg} />}
           title="QuTao"
