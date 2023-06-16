@@ -15,9 +15,9 @@ export default defineConfig({
       redirect: '/home',
     },
     {
-      name: '首页',
       path: '/home',
       component: './Home',
+      menuRender: false,
     },
     {
       name: '商品',
@@ -35,7 +35,7 @@ export default defineConfig({
       component: './Info',
     },
     {
-      name: '登出',
+      // name: '登出',
       path: '/logout',
       component: './Logout',
     },

@@ -42,10 +42,6 @@ declare namespace API {
     username: string;
     amount: number;
   }
-  // TODO: 修改接口
-  // interface listProductInfo {
-  //   message: string;
-  // }
   interface listProductInfo {
     message: string;
   }
@@ -69,6 +65,4 @@ declare namespace API {
     description: string;
     allowance: number;
   }
-
-
 }

@@ -174,12 +174,26 @@ const TableList: React.FC<unknown> = () => {
 
   
 
+  const name = localStorage.getItem("name")
   const columnsBooks: ProDescriptionsItemProps<API.BookInfo>[] = columns.slice(1, columns.length);
 
   return (
     <PageContainer
       header={{
       }}
+      extra={[
+        <div>
+          {name==''?'未登录':name}
+        </div>,
+        <Button key="1" type="primary"
+          onClick={()=>{
+            localStorage.setItem('name', '')
+            window.location.href = '/logout';
+          }}
+        >
+          {name==''?'登录/注册':'登出'}
+        </Button>,
+      ]}
     >
       <ProTable<API.productInfo>
         headerTitle="商品列表"
@@ -193,11 +207,6 @@ const TableList: React.FC<unknown> = () => {
           sorter,
           filter,
         ) => {
-          // const { payload, success } = await listProduct({
-          //   ...params,
-          //   sorter,
-          //   filter,
-          // });
           const { payload, success } = await listProduct({
             message:params?.description,
           });

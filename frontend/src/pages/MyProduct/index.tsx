@@ -195,6 +195,7 @@ const TableList: React.FC<unknown> = () => {
 
   
 
+  const name = localStorage.getItem("name")
   const columnsBooks: ProDescriptionsItemProps<API.BookInfo>[] = columns.slice(1, columns.length);
 
   if (localStorage.getItem('name')===null || localStorage.getItem('name') == '') {
@@ -204,6 +205,19 @@ const TableList: React.FC<unknown> = () => {
     <PageContainer
       header={{
       }}
+      extra={[
+        <div>
+          {name}
+        </div>,
+        <Button key="1" type="primary"
+          onClick={()=>{
+            localStorage.setItem('name', '')
+            window.location.href = '/logout';
+          }}
+        >
+          登出
+        </Button>,
+      ]}
     >
       <ProTable<API.productInfo>
         headerTitle="我的商品列表"
