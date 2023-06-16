@@ -71,7 +71,7 @@ export default () => {
         <LoginForm
           logo={<img src={logoimg} />}
           title="QuTao"
-          subTitle="垃圾区块链平台"
+          subTitle="去中心化交易平台"
           actions={
             <></>
           }
